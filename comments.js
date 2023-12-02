@@ -1,13 +1,11 @@
 //Create a web server
 
 const express = require('express');
-const app = express();
-const port = 3000;
+const router = express.Router();
+const commentsCtrl = require('../controllers/comments');
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+// Handle Requests to the /comments path
+router.get('/', commentsCtrl.index);
+router.get('/new', commentsCtrl.new);
+router.post('/', commentsCtrl.create);
+router.delete('/:id', commentsCtrl.delete);
