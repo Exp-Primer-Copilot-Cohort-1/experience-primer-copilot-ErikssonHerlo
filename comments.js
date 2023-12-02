@@ -1,11 +1,13 @@
-//Create a web server
+// Create web server 
+//======================================
 
+// Import modules
 const express = require('express');
 const router = express.Router();
-const commentsCtrl = require('../controllers/comments');
+const commentController = require('../controllers/commentController');
 
-// Handle Requests to the /comments path
-router.get('/', commentsCtrl.index);
-router.get('/new', commentsCtrl.new);
-router.post('/', commentsCtrl.create);
-router.delete('/:id', commentsCtrl.delete);
+// Handle request
+router.get('/', commentController.comment_list);
+router.get('/create', commentController.comment_create_get);
+router.post('/create', commentController.comment_create_post);
+router.get('/:id/delete', commentController.comment_delete_get);
